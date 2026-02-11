@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TITOLO - Luxury Fragrance</title>
+  <title>Maison d'Or - Luxury Fragrance</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/_sdk/element_sdk.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -303,14 +303,22 @@
  </head>
  <body class="h-full font-montserrat bg-[#0a0805] text-[#E8E4DF] overflow-x-hidden">
   <div id="app-wrapper" class="w-full h-full overflow-auto"><!-- Navigation Premium -->
-<nav class="fixed top-0 left-0 right-0 z-50 glass-effect-premium backdrop-blur-xl border-b border-[#C9A86C]/10">
-  <div class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
-    <div class="flex items-center gap-4">
-      <img src="logo.png" alt="Maison d'Or Logo" class="w-14 h-14 object-contain float-effect">
-      <span class="font-bodoni text-2xl tracking-[0.15em] gold-gradient">MAISON D'OR</span>
+   <nav class="fixed top-0 left-0 right-0 z-50 glass-effect-premium backdrop-blur-xl border-b border-[#C9A86C]/10">
+    <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
+     <div class="flex items-center gap-4">
+      <svg width="56" height="56" viewbox="0 0 100 100" class="float-effect"><defs>
+        <lineargradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+         <stop offset="0%" style="stop-color:#E8D5B7" />
+         <stop offset="50%" style="stop-color:#C9A86C" />
+         <stop offset="100%" style="stop-color:#8B7355" />
+        </lineargradient>
+       </defs> <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logoGrad)" stroke-width="1.5" /> <path d="M30 50 Q50 25 70 50 Q50 75 30 50" fill="none" stroke="url(#logoGrad)" stroke-width="1" /> <circle cx="50" cy="50" r="6" fill="url(#logoGrad)" /> <path d="M50 30 L50 20 M50 70 L50 80 M30 50 L20 50 M70 50 L80 50" stroke="url(#logoGrad)" stroke-width="0.8" opacity="0.7" />
+      </svg><span class="font-bodoni text-2xl tracking-[0.15em] gold-gradient">MAISON D'OR</span>
+     </div>
+     <div class="hidden md:flex items-center gap-12 text-xs tracking-[0.25em] uppercase font-medium"><a href="#fragrances" class="text-[#C9A86C] hover:text-[#E8D5B7] transition-all duration-400 relative group"> Fragranze <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A86C] to-transparent group-hover:w-full transition-all duration-500"></span> </a> <a href="#philosophy" class="text-[#C9A86C] hover:text-[#E8D5B7] transition-all duration-400 relative group"> Filosofia <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A86C] to-transparent group-hover:w-full transition-all duration-500"></span> </a> <a href="#discover" class="text-[#C9A86C] hover:text-[#E8D5B7] transition-all duration-400 relative group"> Scopri <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A86C] to-transparent group-hover:w-full transition-all duration-500"></span> </a>
+     </div>
     </div>
-    </div>
-</nav>
+   </nav><!-- Hero Section Ultra Luxury -->
    <section class="relative min-h-[100%] flex items-center justify-center overflow-hidden pt-24"><!-- Multi-layer Background -->
     <div class="absolute inset-0 bg-gradient-to-br from-[#1a1512] via-[#0a0805] to-[#15100a]"></div><!-- Atmospheric Layers -->
     <div class="absolute inset-0 opacity-40">
@@ -594,7 +602,7 @@
           <stop offset="100%" style="stop-color:#8B7355" />
          </lineargradient>
         </defs> <circle cx="50" cy="50" r="44" fill="none" stroke="url(#footerLogoGrad)" stroke-width="1.5" /> <path d="M30 50 Q50 25 70 50 Q50 75 30 50" fill="none" stroke="url(#footerLogoGrad)" stroke-width="1" /> <circle cx="50" cy="50" r="6" fill="url(#footerLogoGrad)" />
-       </svg><span class="font-bodoni text-2xl tracking-[0.15em] gold-gradient">TITOLO</span>
+       </svg><span class="font-bodoni text-2xl tracking-[0.15em] gold-gradient">MAISON D'OR</span>
       </div><!-- Motto -->
       <p id="brand-motto" class="font-lora text-xl italic text-[#C9A86C] font-light">The Art of Presence</p><!-- Divider -->
       <div class="divider-gold-premium w-32"></div><!-- Social Icons -->
@@ -611,7 +619,7 @@
        <p class="tracking-wide">+39 02 1234 5678</p>
       </div><!-- Final Divider -->
       <div class="divider-gold-premium w-full max-w-sm"></div><!-- Copyright -->
-      <p class="text-[#6A5A4A] text-xs tracking-[0.2em] font-montserrat">© 2024 TITOLO · FRAGRANCE SIGNATURE</p>
+      <p class="text-[#6A5A4A] text-xs tracking-[0.2em] font-montserrat">© 2024 MAISON D'OR · FRAGRANCE SIGNATURE</p>
      </div>
     </div>
    </footer>
