@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="it" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maison d'Or - Luxury Fragrance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&amp;family=Lora:wght@400;500;600&amp;family=Montserrat:wght@100;200;300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    .font-bodoni {
+      font-family: 'Bodoni Moda', Georgia, serif;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+    
+    .font-lora {
+      font-family: 'Lora', Georgia, serif;
+    }
+    
+    .font-montserrat {
+      font-family: 'Montserrat', system-ui, sans-serif;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    
+    @keyframes glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotateZ(0deg); }
+      50% { transform: translateY(-18px) rotateZ(0.3deg); }
+    }
+    
+    @keyframes liquidGlow {
+      0%, 100% { 
+        box-shadow: 0 0 60px rgba(201, 168, 108, 0.2), 
+                    inset 0 0 60px rgba(201, 168, 108, 0.08),
+                    0 30px 100px -30px rgba(201, 168, 108, 0.3);
+      }
+      50% { 
+        box-shadow: 0 0 100px rgba(201, 168, 108, 0.35), 
+                    inset 0 0 80px rgba(201, 168, 108, 0.15),
+                    0 40px 120px -20px rgba(201, 168, 108, 0.4);
+      }
+    }
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    
+    .animate-delay-1 { animation-delay: 0.3s; opacity: 0; }
+    .animate-delay-2 { animation-delay: 0.6s; opacity: 0; }
+    .animate-delay-3 { animation-delay: 0.9s; opacity: 0; }
+    .animate-delay-4 { animation-delay: 1.2s; opacity: 0; }
+    
+    .gold-gradient {
+      background: linear-gradient(135deg, #E8D5B7 0%, #D4A574 25%, #C9A86C 50%, #B8963F 75%, #A08050 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 6s linear infinite;
+    }
+    
+    .glow-effect {
+      animation: glow 4s ease-in-out infinite;
+    }
+    
+    .float-effect {
+      animation: float 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    .breathe-effect {
+      animation: breathe 5s ease-in-out infinite;
+    }
+    
+    .luxury-shadow-deep {
+      box-shadow: 0 40px 120px -30px rgba(0, 0, 0, 0.8),
+                  0 20px 80px -20px rgba(201, 168, 108, 0.25),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+    
+    .liquid-glow {
+      animation: liquidGlow 4s ease-in-out infinite;
+    }
+    
+    .glass-effect-premium {
+      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(201, 168, 108, 0.25);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    
+    .note-card-premium {
+      background: linear-gradient(145deg, rgba(30,25,20,0.95) 0%, rgba(20,15,10,0.98) 100%);
+      border: 1px solid rgba(201, 168, 108, 0.2);
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .note-card-premium::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 108, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .note-card-premium:hover {
+      border-color: rgba(201, 168, 108, 0.5);
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px -15px rgba(201, 168, 108, 0.25),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      background: linear-gradient(145deg, rgba(35,30,25,0.95) 0%, rgba(25,18,12,0.98) 100%);
+    }
+    
+    .note-card-premium:hover::before {
+      left: 100%;
+    }
+    
+    .btn-luxury-premium {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+    }
+    
+    .btn-luxury-premium::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.7s ease;
+      z-index: -1;
+    }
+    
+    .btn-luxury-premium::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .btn-luxury-premium:hover::before {
+      left: 100%;
+    }
+    
+    .btn-luxury-premium:hover::after {
+      opacity: 1;
+    }
+    
+    .btn-luxury-premium:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px -15px rgba(201, 168, 108, 0.6),
+                  0 0 30px rgba(201, 168, 108, 0.2) inset;
+      letter-spacing: 0.25em;
+    }
+    
+    .scroll-section {
+      opacity: 0;
+      transform: translateY(80px);
+      transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .scroll-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .fragrance-card-premium {
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(201, 168, 108, 0);
+    }
+    
+    .fragrance-card-premium:hover {
+      transform: scale(1.015) translateY(-10px);
+      border-color: rgba(201, 168, 108, 0.3);
+      box-shadow: 0 50px 100px -30px rgba(201, 168, 108, 0.3);
+    }
+    
+    .divider-gold-premium {
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(201, 168, 108, 0.6) 50%, transparent 100%);
+      box-shadow: 0 0 20px rgba(201, 168, 108, 0.2);
+    }
+    
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(201, 168, 108, 0.3) 50%, transparent 100%);
+      margin: 80px 0;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #0a0805;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #C9A86C, #8B7355);
+      border-radius: 5px;
+      border: 2px solid #0a0805;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #E8D5B7, #A08050);
+    }
+    
+    .text-balance {
+      text-wrap: balance;
+    }
+    
+    .elegant-underline {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .elegant-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 108, 0.8), transparent);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-montserrat bg-[#0a0805] text-[#E8E4DF] overflow-x-hidden">
+  <div id="app-wrapper" class="w-full h-full overflow-auto"><!-- Navigation Premium -->
+   <nav class="fixed top-0 left-0 right-0 z-50 glass-effect-premium backdrop-blur-xl border-b border-[#C9A86C]/10">
+    <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
+     <div class="flex items-center gap-4">
+      <svg width="56" height="56" viewbox="0 0 100 100" class="float-effect"><defs>
+        <lineargradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+         <stop offset="0%" style="stop-color:#E8D5B7" />
+         <stop offset="50%" style="stop-color:#C9A86C" />
+         <stop offset="100%" style="stop-color:#8B7355" />
+        </lineargradient>
+       </defs> <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logoGrad)" stroke-width="1.5" /> <path d="M30 50 Q50 25 70 50 Q50 75 30 50" fill="none" stroke="url(#logoGrad)" stroke-width="1" /> <circle cx="50" cy="50" r="6" fill="url(#logoGrad)" /> <path d="M50 30 L50 20 M50 70 L50 80 M30 50 L20 50 M70 50 L80 50" stroke="url(#logoGrad)" stroke-width="0.8" opacity="0.7" />
+      </svg><span class="font-bodoni text-2xl tracking-[0.15em] gold-gradient">MAISON D'OR</span>
+     </div>
+     <div class="hidden md:flex items-center gap-12 text-xs tracking-[0.25em] uppercase font-medium"><a href="#fragrances" class="text-[#C9A86C] hover:text-[#E8D5B7] transition-all duration-400 relative group"> Fragranze <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A86C] to-transparent group-hover:w-full transition-all duration-500"></span> </a> <a href="#philosophy" class="text-[#C9A86C] hover:text-[#E8D5B7] transition-all duration-400 relative group"> Filosofia <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A86C] to-transparent group-hover:w-full transition-all duration-500"></span> </a> <a href="#discover" class="text-[#C9A86C] hover:text-[#E8D5B7] transition-all duration-400 relative group"> Scopri <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#C9A86C] to-transparent group-hover:w-full transition-all duration-500"></span> </a>
+     </div>
+    </div>
+   </nav><!-- Hero Section Ultra Luxury -->
+   <section class="relative min-h-[100%] flex items-center justify-center overflow-hidden pt-24"><!-- Multi-layer Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-[#1a1512] via-[#0a0805] to-[#15100a]"></div><!-- Atmospheric Layers -->
+    <div class="absolute inset-0 opacity-40">
+     <div class="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-[#C9A86C] rounded-full filter blur-[180px] glow-effect"></div>
+     <div class="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] bg-[#D4A574] rounded-full filter blur-[160px] glow-effect" style="animation-delay: 2s;"></div>
+     <div class="absolute top-1/4 right-1/4 w-[350px] h-[350px] bg-[#E8B4B8] rounded-full filter blur-[140px] glow-effect opacity-30" style="animation-delay: 1s;"></div>
+    </div><!-- Decorative Grid -->
+    <div class="absolute inset-0 opacity-5">
+     <div style="background-image: linear-gradient(0deg, transparent 24%, rgba(201, 168, 108, 0.1) 25%, rgba(201, 168, 108, 0.1) 26%, transparent 27%), linear-gradient(90deg, transparent 24%, rgba(201, 168, 108, 0.1) 25%, rgba(201, 168, 108, 0.1) 26%, transparent 27%); background-size: 80px 80px;" class="w-full h-full"></div>
+    </div><!-- Hero Content -->
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-40 text-center"><!-- Decorative Top Element -->
+     <div class="flex justify-center mb-12 animate-fade-in-up">
+      <svg width="160" height="40" viewbox="0 0 160 40" class="opacity-70"><defs>
+        <lineargradient id="decorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+         <stop offset="0%" style="stop-color:#C9A86C;stop-opacity:0" />
+         <stop offset="50%" style="stop-color:#C9A86C;stop-opacity:1" />
+         <stop offset="100%" style="stop-color:#C9A86C;stop-opacity:0" />
+        </lineargradient>
+       </defs> <path d="M10 20 L70 20" stroke="url(#decorGrad)" stroke-width="1.5" fill="none" /> <circle cx="80" cy="20" r="5" fill="none" stroke="#C9A86C" stroke-width="1" /> <circle cx="80" cy="20" r="12" fill="none" stroke="#C9A86C" stroke-width="0.8" opacity="0.5" /> <circle cx="80" cy="20" r="20" fill="none" stroke="#C9A86C" stroke-width="0.5" opacity="0.3" /> <path d="M90 20 L150 20" stroke="url(#decorGrad)" stroke-width="1.5" fill="none" />
+      </svg>
+     </div><!-- Main Headline -->
+     <h1 id="hero-headline" class="font-bodoni text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-[0.1em] mb-8 animate-fade-in-up animate-delay-1 leading-tight text-balance"><span class="gold-gradient block mb-4">Two Icons.</span> <span class="text-[#E8E4DF] block mb-4">Two Souls.</span> <span class="gold-gradient block">One Signature.</span></h1><!-- Subtitle -->
+     <p id="hero-subtitle" class="text-xl md:text-2xl text-[#B8A89A] font-lora font-light tracking-wider max-w-3xl mx-auto mb-16 leading-relaxed animate-fade-in-up animate-delay-2 text-balance">Profumi che non si indossano.<br><span class="italic text-[#C9A86C] font-serif">Si incarnano.</span></p><!-- CTA Button -->
+     <div class="animate-fade-in-up animate-delay-3 mb-20"><a href="#fragrances" id="hero-cta" class="btn-luxury-premium inline-block bg-gradient-to-r from-[#C9A86C] via-[#B8963F] to-[#A08050] text-[#0a0805] px-14 py-5 text-sm luxury-shadow-deep hover:shadow-2xl"> Scopri le fragranze </a>
+     </div><!-- Scroll Indicator -->
+     <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-fade-in-up animate-delay-4">
+      <div class="flex flex-col items-center gap-4 text-[#C9A86C] opacity-50"><span class="text-xs tracking-[0.3em] uppercase font-medium">Scorri</span>
+       <svg width="24" height="40" viewbox="0 0 24 40" class="animate-bounce" style="animation-duration: 2.5s;"><rect x="8" y="2" width="8" height="24" rx="4" fill="none" stroke="currentColor" stroke-width="1.5" /> <circle cx="12" cy="10" r="2.5" fill="currentColor" class="animate-pulse" />
+       </svg>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider"></div><!-- Fragrances Section Ultra Premium -->
+   <section id="fragrances" class="py-40 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a0805] via-[#12100d] to-[#0a0805]"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-8"><!-- Section Header -->
+     <div class="text-center mb-32 scroll-section"><span class="text-[#C9A86C] text-xs tracking-[0.4em] uppercase font-semibold opacity-80">Collezione Iconica</span>
+      <h2 class="font-bodoni text-6xl md:text-7xl mt-6 gold-gradient tracking-[0.08em]">Le Fragranze</h2>
+      <div class="divider-gold-premium w-32 mx-auto mt-10"></div>
+      <p class="text-[#9A8A7A] text-lg font-lora mt-8 max-w-2xl mx-auto">Ogni profumo è una dichiarazione di stile, una firma olfativa che racconta chi sei.</p>
+     </div><!-- Royal Petal Card -->
+     <div class="grid lg:grid-cols-2 gap-20 items-center mb-40 scroll-section">
+      <div class="fragrance-card-premium relative group order-2 lg:order-1">
+       <div class="aspect-square bg-gradient-to-br from-[#1f1a16] via-[#0f0c0a] to-[#0a0805] rounded-lg p-16 luxury-shadow-deep relative overflow-hidden border border-[#C9A86C]/15 liquid-glow"><!-- Ambient Light -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-[#E8B4B8]/15 via-transparent to-transparent opacity-40"></div><!-- Rose Bottle -->
+        <svg viewbox="0 0 200 280" class="w-full h-full float-effect relative z-10"><defs>
+          <lineargradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+           <stop offset="0%" style="stop-color:#F9E4E7" />
+           <stop offset="20%" style="stop-color:#F0D0D5" />
+           <stop offset="40%" style="stop-color:#E8B4B8" />
+           <stop offset="60%" style="stop-color:#DFA0A5" />
+           <stop offset="80%" style="stop-color:#D49A9E" />
+           <stop offset="100%" style="stop-color:#C08085" />
+          </lineargradient>
+          <lineargradient id="roseCap" x1="0%" y1="0%" x2="100%" y2="100%">
+           <stop offset="0%" style="stop-color:#F0E8DC" />
+           <stop offset="50%" style="stop-color:#D4A574" />
+           <stop offset="100%" style="stop-color:#9B8B75" />
+          </lineargradient>
+          <filter id="roseGlow">
+           <fegaussianblur stddeviation="4" result="coloredBlur" />
+           <femerge>
+            <femergenode in="coloredBlur" />
+            <femergenode in="SourceGraphic" />
+           </femerge>
+          </filter>
+         </defs> <ellipse cx="100" cy="185" rx="62" ry="72" fill="url(#roseGrad)" filter="url(#roseGlow)" /> <ellipse cx="100" cy="185" rx="52" ry="62" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" /> <path d="M100 115 Q135 145 125 180 Q100 160 75 180 Q65 145 100 115" fill="url(#roseGrad)" opacity="0.85" /> <path d="M60 165 Q85 140 105 170 Q85 195 60 165" fill="url(#roseGrad)" opacity="0.7" /> <path d="M140 165 Q115 140 95 170 Q115 195 140 165" fill="url(#roseGrad)" opacity="0.7" /> <rect x="88" y="75" width="24" height="45" fill="url(#roseCap)" /> <rect x="82" y="60" width="36" height="18" rx="3" fill="url(#roseCap)" /> <ellipse cx="100" cy="48" rx="22" ry="18" fill="url(#roseCap)" /> <ellipse cx="100" cy="35" rx="16" ry="12" fill="url(#roseCap)" /> <ellipse cx="78" cy="175" rx="18" ry="30" fill="rgba(255,255,255,0.18)" />
+        </svg>
+       </div>
+      </div>
+      <div class="order-1 lg:order-2 space-y-8">
+       <div class="space-y-2"><span class="text-[#E8B4B8] text-xs tracking-[0.4em] uppercase font-semibold opacity-70">Femminile · Regale · Sensuale</span>
+        <h3 id="royal-petal-title" class="font-bodoni text-5xl md:text-6xl text-[#E8D5B7] tracking-[0.08em]">ROYAL PETAL</h3>
+       </div>
+       <p id="royal-petal-tagline" class="font-lora text-3xl italic text-[#C9A86C] font-light">Indulge in Perfection</p>
+       <div class="divider-gold-premium w-20"></div>
+       <div class="space-y-6 pt-4">
+        <p class="text-[#B8A89A] leading-relaxed text-lg font-lora font-light">Royal Petal è la celebrazione della perfezione. Un profumo che nasce dalla delicatezza e fiorisce nel lusso assoluto.</p>
+        <p class="text-[#A09080] italic leading-relaxed font-lora">Ogni nota accarezza la pelle come seta, lasciando una scia elegante e indimenticabile. È l'essenza di chi non ha bisogno di dimostrare nulla. La perfezione, semplicemente, accade.</p>
+       </div>
+       <div class="pt-8">
+        <div class="inline-block">
+         <p class="font-bodoni text-xl gold-gradient tracking-[0.1em] uppercase">Eleganza · Grazia · Assoluto</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="section-divider opacity-50"></div><!-- Gold Riff Card -->
+     <div class="grid lg:grid-cols-2 gap-20 items-center scroll-section">
+      <div class="space-y-8">
+       <div class="space-y-2"><span class="text-[#C9A86C] text-xs tracking-[0.4em] uppercase font-semibold opacity-70">Potente · Audace · Iconico</span>
+        <h3 id="gold-riff-title" class="font-bodoni text-5xl md:text-6xl text-[#E8D5B7] tracking-[0.08em]">GOLD RIFF</h3>
+       </div>
+       <p id="gold-riff-tagline" class="font-lora text-3xl italic text-[#C9A86C] font-light">The Rhythm of Power</p>
+       <div class="divider-gold-premium w-20"></div>
+       <div class="space-y-6 pt-4">
+        <p class="text-[#B8A89A] leading-relaxed text-lg font-lora font-light">Gold Riff è energia pura. Un'esplosione di carattere che vibra sulla pelle come un accordo perfetto.</p>
+        <p class="text-[#A09080] italic leading-relaxed font-lora">Caldo, magnetico, indomabile. Non segue il ritmo. Lo detta.</p>
+       </div>
+       <div class="pt-8">
+        <div class="inline-block">
+         <p class="font-bodoni text-xl gold-gradient tracking-[0.1em] uppercase">Potenza · Presenza · Identità</p>
+        </div>
+       </div>
+      </div>
+      <div class="fragrance-card-premium relative group order-1">
+       <div class="aspect-square bg-gradient-to-br from-[#1f1a16] via-[#0f0c0a] to-[#0a0805] rounded-lg p-16 luxury-shadow-deep relative overflow-hidden border border-[#C9A86C]/15 liquid-glow"><!-- Ambient Light -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-[#C9A86C]/15 via-transparent to-transparent opacity-40"></div><!-- Guitar Bottle -->
+        <svg viewbox="0 0 200 280" class="w-full h-full float-effect relative z-10" style="animation-delay: 1.2s;"><defs>
+          <lineargradient id="guitarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+           <stop offset="0%" style="stop-color:#F0E8DC" />
+           <stop offset="25%" style="stop-color:#E0D5B8" />
+           <stop offset="50%" style="stop-color:#D4A574" />
+           <stop offset="75%" style="stop-color:#B8963F" />
+           <stop offset="100%" style="stop-color:#8B7355" />
+          </lineargradient>
+          <filter id="guitarGlow">
+           <fegaussianblur stddeviation="5" result="coloredBlur" />
+           <femerge>
+            <femergenode in="coloredBlur" />
+            <femergenode in="SourceGraphic" />
+           </femerge>
+          </filter>
+         </defs> <ellipse cx="100" cy="205" rx="58" ry="55" fill="url(#guitarGrad)" filter="url(#guitarGlow)" /> <ellipse cx="100" cy="145" rx="43" ry="40" fill="url(#guitarGrad)" /> <circle cx="100" cy="205" r="16" fill="#0a0805" opacity="0.7" /> <circle cx="100" cy="205" r="13" fill="none" stroke="url(#guitarGrad)" stroke-width="1.5" /> <rect x="90" y="55" width="20" height="100" fill="url(#guitarGrad)" /> <path d="M82 55 L82 25 Q100 12 118 25 L118 55" fill="url(#guitarGrad)" /> <circle cx="88" cy="38" r="5" fill="#0a0805" /> <circle cx="112" cy="38" r="5" fill="#0a0805" /> <circle cx="88" cy="50" r="5" fill="#0a0805" /> <circle cx="112" cy="50" r="5" fill="#0a0805" /> <line x1="94" y1="50" x2="94" y2="245" stroke="rgba(255,255,255,0.35)" stroke-width="0.8" /> <line x1="100" y1="50" x2="100" y2="245" stroke="rgba(255,255,255,0.35)" stroke-width="0.8" /> <line x1="106" y1="50" x2="106" y2="245" stroke="rgba(255,255,255,0.35)" stroke-width="0.8" /> <rect x="83" y="235" width="34" height="10" rx="2" fill="#0a0805" opacity="0.6" /> <ellipse cx="80" cy="195" rx="15" ry="25" fill="rgba(255,255,255,0.2)" />
+        </svg>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider"></div><!-- Notes Section Premium -->
+   <section class="py-40 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a0805] via-[#0d0b08] to-[#0a0805]"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-8">
+     <div class="text-center mb-32 scroll-section"><span class="text-[#C9A86C] text-xs tracking-[0.4em] uppercase font-semibold opacity-80">Composizione Olfattiva</span>
+      <h2 class="font-bodoni text-6xl md:text-7xl mt-6 gold-gradient tracking-[0.08em]">Note Transcendenti</h2>
+      <div class="divider-gold-premium w-32 mx-auto mt-10"></div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-20"><!-- Royal Petal Notes -->
+      <div class="scroll-section">
+       <h3 class="font-bodoni text-2xl text-[#E8B4B8] mb-12 text-center tracking-[0.08em]">ROYAL PETAL</h3>
+       <div class="space-y-8">
+        <div class="note-card-premium p-8 rounded-lg">
+         <div class="flex items-start gap-5 mb-4">
+          <svg width="28" height="28" viewbox="0 0 24 24" class="text-[#E8D5B7] flex-shrink-0 mt-1"><defs>
+            <lineargradient id="noteIcon1" x1="0%" y1="0%" x2="100%" y2="100%">
+             <stop offset="0%" style="stop-color:#E8D5B7" />
+             <stop offset="100%" style="stop-color:#C9A86C" />
+            </lineargradient>
+           </defs> <circle cx="12" cy="5" r="3.5" fill="url(#noteIcon1)" /> <path d="M12 9 L12 21 M12 9 C12 9 8 11 8 14 C8 17 10 19 12 19 C14 19 16 17 16 14 C16 11 12 9 12 9" fill="none" stroke="url(#noteIcon1)" stroke-width="1.2" />
+          </svg>
+          <div><span class="text-[#C9A86C] text-xs tracking-[0.3em] uppercase font-semibold block mb-2">Note di Testa</span>
+           <p class="text-[#E8E4DF] font-lora text-lg font-light">Bergamotto, Pepe Rosa, Mandarino</p>
+          </div>
+         </div>
+        </div>
+        <div class="note-card-premium p-8 rounded-lg">
+         <div class="flex items-start gap-5 mb-4">
+          <svg width="28" height="28" viewbox="0 0 24 24" class="text-[#E8D5B7] flex-shrink-0 mt-1"><defs>
+            <lineargradient id="noteIcon2" x1="0%" y1="0%" x2="100%" y2="100%">
+             <stop offset="0%" style="stop-color:#E8D5B7" />
+             <stop offset="100%" style="stop-color:#C9A86C" />
+            </lineargradient>
+           </defs> <path d="M12 3 Q18 8 12 15 Q6 8 12 3" fill="url(#noteIcon2)" opacity="0.8" /> <path d="M12 8 Q15 11 12 14 Q9 11 12 8" fill="#0a0805" />
+          </svg>
+          <div><span class="text-[#C9A86C] text-xs tracking-[0.3em] uppercase font-semibold block mb-2">Note di Cuore</span>
+           <p class="text-[#E8E4DF] font-lora text-lg font-light">Rosa Damascena, Peonia, Iris</p>
+          </div>
+         </div>
+        </div>
+        <div class="note-card-premium p-8 rounded-lg">
+         <div class="flex items-start gap-5 mb-4">
+          <svg width="28" height="28" viewbox="0 0 24 24" class="text-[#E8D5B7] flex-shrink-0 mt-1"><defs>
+            <lineargradient id="noteIcon3" x1="0%" y1="0%" x2="100%" y2="100%">
+             <stop offset="0%" style="stop-color:#E8D5B7" />
+             <stop offset="100%" style="stop-color:#C9A86C" />
+            </lineargradient>
+           </defs> <rect x="5" y="9" width="14" height="12" rx="2" fill="none" stroke="url(#noteIcon3)" stroke-width="1.2" /> <path d="M8 9 L8 5 Q12 3 16 5 L16 9" fill="none" stroke="url(#noteIcon3)" stroke-width="1.2" />
+          </svg>
+          <div><span class="text-[#C9A86C] text-xs tracking-[0.3em] uppercase font-semibold block mb-2">Note di Fondo</span>
+           <p class="text-[#E8E4DF] font-lora text-lg font-light">Muschio Bianco, Ambra, Legno di Sandalo</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Gold Riff Notes -->
+      <div class="scroll-section">
+       <h3 class="font-bodoni text-2xl text-[#C9A86C] mb-12 text-center tracking-[0.08em]">GOLD RIFF</h3>
+       <div class="space-y-8">
+        <div class="note-card-premium p-8 rounded-lg">
+         <div class="flex items-start gap-5 mb-4">
+          <svg width="28" height="28" viewbox="0 0 24 24" class="text-[#E8D5B7] flex-shrink-0 mt-1"><defs>
+            <lineargradient id="noteIcon4" x1="0%" y1="0%" x2="100%" y2="100%">
+             <stop offset="0%" style="stop-color:#E8D5B7" />
+             <stop offset="100%" style="stop-color:#C9A86C" />
+            </lineargradient>
+           </defs> <circle cx="12" cy="5" r="3.5" fill="url(#noteIcon4)" /> <path d="M12 9 L12 21 M12 9 C12 9 8 11 8 14 C8 17 10 19 12 19 C14 19 16 17 16 14 C16 11 12 9 12 9" fill="none" stroke="url(#noteIcon4)" stroke-width="1.2" />
+          </svg>
+          <div><span class="text-[#C9A86C] text-xs tracking-[0.3em] uppercase font-semibold block mb-2">Note di Testa</span>
+           <p class="text-[#E8E4DF] font-lora text-lg font-light">Cardamomo, Zafferano, Pompelmo</p>
+          </div>
+         </div>
+        </div>
+        <div class="note-card-premium p-8 rounded-lg">
+         <div class="flex items-start gap-5 mb-4">
+          <svg width="28" height="28" viewbox="0 0 24 24" class="text-[#E8D5B7] flex-shrink-0 mt-1"><defs>
+            <lineargradient id="noteIcon5" x1="0%" y1="0%" x2="100%" y2="100%">
+             <stop offset="0%" style="stop-color:#E8D5B7" />
+             <stop offset="100%" style="stop-color:#C9A86C" />
+            </lineargradient>
+           </defs> <path d="M12 3 Q18 8 12 15 Q6 8 12 3" fill="url(#noteIcon5)" opacity="0.8" /> <path d="M12 8 Q15 11 12 14 Q9 11 12 8" fill="#0a0805" />
+          </svg>
+          <div><span class="text-[#C9A86C] text-xs tracking-[0.3em] uppercase font-semibold block mb-2">Note di Cuore</span>
+           <p class="text-[#E8E4DF] font-lora text-lg font-light">Oud, Cuoio, Tabacco</p>
+          </div>
+         </div>
+        </div>
+        <div class="note-card-premium p-8 rounded-lg">
+         <div class="flex items-start gap-5 mb-4">
+          <svg width="28" height="28" viewbox="0 0 24 24" class="text-[#E8D5B7] flex-shrink-0 mt-1"><defs>
+            <lineargradient id="noteIcon6" x1="0%" y1="0%" x2="100%" y2="100%">
+             <stop offset="0%" style="stop-color:#E8D5B7" />
+             <stop offset="100%" style="stop-color:#C9A86C" />
+            </lineargradient>
+           </defs> <rect x="5" y="9" width="14" height="12" rx="2" fill="none" stroke="url(#noteIcon6)" stroke-width="1.2" /> <path d="M8 9 L8 5 Q12 3 16 5 L16 9" fill="none" stroke="url(#noteIcon6)" stroke-width="1.2" />
+          </svg>
+          <div><span class="text-[#C9A86C] text-xs tracking-[0.3em] uppercase font-semibold block mb-2">Note di Fondo</span>
+           <p class="text-[#E8E4DF] font-lora text-lg font-light">Ambra Grigia, Vetiver, Benzoino</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider"></div><!-- Philosophy Section -->
+   <section id="philosophy" class="py-40 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a0805] via-[#15100a] to-[#0a0805]"></div>
+    <div class="absolute inset-0 opacity-30">
+     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#C9A86C] rounded-full filter blur-[250px] glow-effect"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-8 text-center scroll-section py-20"><span class="text-[#C9A86C] text-xs tracking-[0.4em] uppercase font-semibold opacity-80">La Nostra Essenza</span>
+     <h2 id="philosophy-title" class="font-bodoni text-6xl md:text-7xl mt-8 gold-gradient tracking-[0.08em]">Beyond Fragrance</h2>
+     <div class="divider-gold-premium w-40 mx-auto mt-12"></div>
+     <div class="space-y-8 text-2xl md:text-3xl font-lora text-[#B8A89A] leading-relaxed mt-16">
+      <p class="font-light">Il profumo è <span class="italic text-[#E8D5B7]">linguaggio.</span></p>
+      <p class="font-light">È <span class="italic text-[#E8D5B7]">memoria.</span></p>
+      <p class="italic text-[#C9A86C]">È potere silenzioso.</p>
+     </div>
+     <div class="mt-20 space-y-6 text-[#9A8A7A] text-lg leading-relaxed max-w-2xl mx-auto font-lora">
+      <p class="font-light">Il brand nasce per chi vuole essere riconosciuto senza parlare.</p>
+      <p class="font-light">Ogni creazione è un'opera, ogni flacone un simbolo di eccellenza.</p>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider"></div><!-- CTA Section Final -->
+   <section id="discover" class="py-40 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[#0a0805]"></div>
+    <div class="absolute inset-0">
+     <div class="absolute top-0 left-1/3 w-1 h-full bg-gradient-to-b from-transparent via-[#C9A86C]/15 to-transparent opacity-50"></div>
+     <div class="absolute top-0 right-1/3 w-1 h-full bg-gradient-to-b from-transparent via-[#C9A86C]/15 to-transparent opacity-50"></div>
+    </div>
+    <div class="relative z-10 max-w-5xl mx-auto px-8 text-center scroll-section py-20">
+     <h2 id="cta-headline" class="font-bodoni text-6xl md:text-8xl gold-gradient mb-8 tracking-[0.08em]">Choose your essence.</h2>
+     <p id="cta-subtitle" class="text-2xl md:text-3xl text-[#B8A89A] font-lora font-light tracking-wider mb-20">Lasciati riconoscere dal tuo profumo.</p>
+     <div class="flex flex-col sm:flex-row gap-8 justify-center"><button class="btn-luxury-premium bg-gradient-to-r from-[#E8B4B8] via-[#D49A9E] to-[#C08085] text-[#0a0805] px-16 py-6 text-sm luxury-shadow-deep"> Scopri Royal Petal </button> <button class="btn-luxury-premium bg-gradient-to-r from-[#C9A86C] via-[#B8963F] to-[#A08050] text-[#0a0805] px-16 py-6 text-sm luxury-shadow-deep"> Scopri Gold Riff </button>
+     </div>
+    </div>
+   </section><!-- Footer Premium -->
+   <footer class="py-24 relative border-t border-[#C9A86C]/15">
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0805] via-[#0d0b08] to-transparent"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-8">
+     <div class="flex flex-col items-center text-center space-y-12"><!-- Logo -->
+      <div class="flex items-center gap-4">
+       <svg width="48" height="48" viewbox="0 0 100 100"><defs>
+         <lineargradient id="footerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#E8D5B7" />
+          <stop offset="50%" style="stop-color:#C9A86C" />
+          <stop offset="100%" style="stop-color:#8B7355" />
+         </lineargradient>
+        </defs> <circle cx="50" cy="50" r="44" fill="none" stroke="url(#footerLogoGrad)" stroke-width="1.5" /> <path d="M30 50 Q50 25 70 50 Q50 75 30 50" fill="none" stroke="url(#footerLogoGrad)" stroke-width="1" /> <circle cx="50" cy="50" r="6" fill="url(#footerLogoGrad)" />
+       </svg><span class="font-bodoni text-2xl tracking-[0.15em] gold-gradient">MAISON D'OR</span>
+      </div><!-- Motto -->
+      <p id="brand-motto" class="font-lora text-xl italic text-[#C9A86C] font-light">The Art of Presence</p><!-- Divider -->
+      <div class="divider-gold-premium w-32"></div><!-- Social Icons -->
+      <div class="flex gap-8"><a href="#" class="text-[#9A8A7A] hover:text-[#C9A86C] transition-all duration-500 transform hover:scale-110">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="currentColor" class="opacity-70 hover:opacity-100"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z" />
+        </svg></a> <a href="#" class="text-[#9A8A7A] hover:text-[#C9A86C] transition-all duration-500 transform hover:scale-110">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="currentColor" class="opacity-70 hover:opacity-100"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg></a> <a href="#" class="text-[#9A8A7A] hover:text-[#C9A86C] transition-all duration-500 transform hover:scale-110">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="currentColor" class="opacity-70 hover:opacity-100"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+        </svg></a>
+      </div><!-- Contact Info -->
+      <div class="text-[#9A8A7A] text-sm font-montserrat space-y-1">
+       <p class="tracking-wide">contact@maisondor.com</p>
+       <p class="tracking-wide">+39 02 1234 5678</p>
+      </div><!-- Final Divider -->
+      <div class="divider-gold-premium w-full max-w-sm"></div><!-- Copyright -->
+      <p class="text-[#6A5A4A] text-xs tracking-[0.2em] font-montserrat">© 2024 MAISON D'OR · FRAGRANCE SIGNATURE</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      hero_headline: "Two Icons. Two Souls. One Signature.",
+      hero_subtitle: "Profumi che non si indossano.\nSi incarnano.",
+      hero_cta: "Scopri le fragranze",
+      royal_petal_title: "ROYAL PETAL",
+      royal_petal_tagline: "Indulge in Perfection",
+      gold_riff_title: "GOLD RIFF",
+      gold_riff_tagline: "The Rhythm of Power",
+      philosophy_title: "Beyond Fragrance",
+      cta_headline: "Choose your essence.",
+      cta_subtitle: "Lasciati riconoscere dal tuo profumo.",
+      brand_motto: "The Art of Presence",
+      background_color: "#0a0805",
+      text_color: "#E8E4DF",
+      accent_color: "#C9A86C",
+      secondary_accent: "#E8B4B8",
+      surface_color: "#1a1512",
+      font_family: "Bodoni Moda",
+      font_size: 16
+    };
+
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -80px 0px'
+    };
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-section').forEach(section => {
+      scrollObserver.observe(section);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          const heroHeadline = document.getElementById('hero-headline');
+          if (heroHeadline) {
+            const headline = config.hero_headline || defaultConfig.hero_headline;
+            const parts = headline.split('.');
+            if (parts.length >= 3) {
+              heroHeadline.innerHTML = `<span class="gold-gradient block mb-4">${parts[0].trim()}.</span><span class="text-[#E8E4DF] block mb-4">${parts[1].trim()}.</span><span class="gold-gradient block">${parts[2].trim()}</span>`;
+            }
+          }
+
+          const heroSubtitle = document.getElementById('hero-subtitle');
+          if (heroSubtitle) {
+            const subtitle = config.hero_subtitle || defaultConfig.hero_subtitle;
+            const lines = subtitle.split('\n');
+            heroSubtitle.innerHTML = lines.map((line, i) => 
+              i === lines.length - 1 ? `<span class="italic text-[#C9A86C] font-serif">${line}</span>` : `${line}<br>`
+            ).join('');
+          }
+
+          const heroCta = document.getElementById('hero-cta');
+          if (heroCta) heroCta.textContent = config.hero_cta || defaultConfig.hero_cta;
+
+          const royalPetalTitle = document.getElementById('royal-petal-title');
+          if (royalPetalTitle) royalPetalTitle.textContent = config.royal_petal_title || defaultConfig.royal_petal_title;
+
+          const royalPetalTagline = document.getElementById('royal-petal-tagline');
+          if (royalPetalTagline) royalPetalTagline.textContent = config.royal_petal_tagline || defaultConfig.royal_petal_tagline;
+
+          const goldRiffTitle = document.getElementById('gold-riff-title');
+          if (goldRiffTitle) goldRiffTitle.textContent = config.gold_riff_title || defaultConfig.gold_riff_title;
+
+          const goldRiffTagline = document.getElementById('gold-riff-tagline');
+          if (goldRiffTagline) goldRiffTagline.textContent = config.gold_riff_tagline || defaultConfig.gold_riff_tagline;
+
+          const philosophyTitle = document.getElementById('philosophy-title');
+          if (philosophyTitle) philosophyTitle.textContent = config.philosophy_title || defaultConfig.philosophy_title;
+
+          const ctaHeadline = document.getElementById('cta-headline');
+          if (ctaHeadline) ctaHeadline.textContent = config.cta_headline || defaultConfig.cta_headline;
+
+          const ctaSubtitle = document.getElementById('cta-subtitle');
+          if (ctaSubtitle) ctaSubtitle.textContent = config.cta_subtitle || defaultConfig.cta_subtitle;
+
+          const brandMotto = document.getElementById('brand-motto');
+          if (brandMotto) brandMotto.textContent = config.brand_motto || defaultConfig.brand_motto;
+
+          const customFont = config.font_family || defaultConfig.font_family;
+          document.querySelectorAll('.font-bodoni').forEach(el => {
+            el.style.fontFamily = `${customFont}, Georgia, serif`;
+          });
+
+          const baseSize = config.font_size || defaultConfig.font_size;
+          document.documentElement.style.fontSize = `${baseSize}px`;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => window.elementSdk.setConfig({ background_color: value })
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => window.elementSdk.setConfig({ surface_color: value })
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => window.elementSdk.setConfig({ text_color: value })
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => window.elementSdk.setConfig({ accent_color: value })
+            },
+            {
+              get: () => config.secondary_accent || defaultConfig.secondary_accent,
+              set: (value) => window.elementSdk.setConfig({ secondary_accent: value })
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => window.elementSdk.setConfig({ font_family: value })
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => window.elementSdk.setConfig({ font_size: value })
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["hero_headline", config.hero_headline || defaultConfig.hero_headline],
+          ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+          ["hero_cta", config.hero_cta || defaultConfig.hero_cta],
+          ["royal_petal_title", config.royal_petal_title || defaultConfig.royal_petal_title],
+          ["royal_petal_tagline", config.royal_petal_tagline || defaultConfig.royal_petal_tagline],
+          ["gold_riff_title", config.gold_riff_title || defaultConfig.gold_riff_title],
+          ["gold_riff_tagline", config.gold_riff_tagline || defaultConfig.gold_riff_tagline],
+          ["philosophy_title", config.philosophy_title || defaultConfig.philosophy_title],
+          ["cta_headline", config.cta_headline || defaultConfig.cta_headline],
+          ["cta_subtitle", config.cta_subtitle || defaultConfig.cta_subtitle],
+          ["brand_motto", config.brand_motto || defaultConfig.brand_motto]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cc52ada35a50e57',t:'MTc3MDgyNjc2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
